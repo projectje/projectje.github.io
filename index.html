@@ -33,7 +33,7 @@
     ░██▒▒▒▒▒▒▒▒▒▒████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█
     ░░████████████░░░█████████████████
 </pre>
-<h2></h2>2019-09-15</h2>
+<h2></h2>September 2019</h2>
 <p>
     Was on my todo list but today added a  page (<a href="https://pages.github.com/"> pages </a></a>)
     Instead of using a tool like <a href="https://jekyllrb.com/">Jekyll</a> I think I will create something in PowerShell that will
@@ -96,62 +96,85 @@
     with links to various translations. that would require a subdir for each post e.g. NL_nl for dutch and only in there the content, title and such while
     other meta properties reside one level higher. But that is too labor intensive.
 </p>
+<h2>Setup of New System</h2>
 <p>
-    There is always the tradeoff between types and taxonomy. You can either make something a "post" or you just make everything content and via a taxonomy
-    you add a property "post". Maybe it is the simplest to not implement any typing at all. Maybe first lookup articles who have done research on the tradeoff
-    between types and taxonomy. I think... there are only things. Things get properties that are the same as other things. At a certain moment we can classify
-    things with the same or mostly the same things in a taxonomy. Then we have a type on a metalevel. To that type we can then assign more things like custom
-    workflows. So maybe I will not type things but rather let something scan through all content and create its own conclusions. Obviously when you have to
-    create a new post it is most handy to see already the properties of a post so you can fill them in and it is also handy that there is a button submit
-    so it is posted. Maybe copy based on existing item is then the handiest. So I could have 5000 postings with a "tag", and then i make 200 postings with a "tag",
-    the system will then classify the ones with tag as a child-type of the non-tag type posting. Once this has been done, we can give names to the types
-    it found and link in some other meta stuff for that type it found. Since now there are real physical copies of such a type versus beforehand creating
-    these types. A taxonomy on the other hand is based on each individual property, so if a set of things have "tag" as property then a taxonomy auto exists.
-    Since there are parent-child relationships, each property can have a parent.
-    Individual properties are also things. When they are the same they form a type and a taxonomy. They also can have parent-child relationships.
-    Properties can have attributes. These attributes are also things. More or less the same story.
-    So a thing post holds a thing title which holds a thing language. The thing language holds only content and no further properties. So we can
-    make a list of all entries for language in our system which in my case is only NL_nl and En_en. The thing title sometimes holds the property
-    language and sometimes not. But since the type-hint is called "title" and it contains content, the system knows that we have a type language
-    that sometimes holds these properties and sometimes not. The parser will need to have input on show title where language=Nl_nl. But the result of this
-    is also a thing. So for the resulting blogpost it goes the same: we should give some example of the result and the system would then need
-    to fiddle out the type of thing we want to produce. <br />
-    The folder structure on disk is only allowing for one hierachy, so we need another mechanism for all the hierachies the system finds. For classification:
-    If a new item holds no title, then it can be considered the parent of the old item since the new item  just adds an item but time-wise it is a child,
-    so the creation dates of things play a role. If something is newer then it will always be a child not a parent. A thing itself can only change in time,
-    e.g. a blog post we change, it might even become a different type e.g. if we remove the title. So a thing can be a of a different type during time.
-    But can only be one thing at a certain time.<br />
-    Im thinking of a text file "language" in a folder things. This has only one property: parents. Which is a list of other things. And it
-    has content which is typed inside this file. In that way I only need one folder "things" and a whole bunch of files. each file will
-    only contain parents: and content:. Via that way probably the complete structure can be setup. It will be hard however to make
-    a new posting, since you will have to enter each individual property and a long list of parent by hand in a seperate file.
-    So it will need some "helpers" which are probably types. More or less its a reverse taxonomy, build from bottom to top instead of
-    top to bottom.
+I think... it will be something like this: <br />
+I want to stay away from defining types upfront such as "addressbookentry", "blogpost", "bookmarks" and also stay away from upfront defining
+a taxonomy of things such as TAG X or category Y.
+I wonder if the approach will work to start off with the bottom to top instead of top to bottom: just placing all content
+the system finds in individual files (tens of thousands) and let the system classify (or probably a human) it to types and taxonomy.
 </p>
-<hr />
-<h2>3rd Party (Disquess) Comments</h2>
-
-<div id="disqus_thread"></div>
-<script>
-var disqus_config = function () {
-    this.page.url = '//projectje.github.io/';  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = 1; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://cogmios.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-
+<h3>Parsed Data Folder: Value ("Things", "The real stuff", the "yet unstructured data")</h3>
+This can contains known things ("typed") and unknown things. If we know the thing e.g. it had a xml key or a json key then it will be placed
+in a subfolder with the name of that key. It is then the assumption on that content. Later on we may manually make different choices on
+the subfolders through extra rules. Later on this may also involve the content parts themselves e.g. if we find "red" in a blogposting, we
+could auto classify it.<br />
+Some items will naturally become types (or enumerations) but things found only once or twice are harder.
+<p>
+    A folder "values" will contains textfiles with a part of the name found along with a guid.
+    <ul>
+        <li>The filename will be part of the text + a GUID.  I could have used the date-time instead but it would create
+            too many duplicates. Since a new thing  can arise on exact the same moment, in a different place. In theory we
+            could also name it the first time we encounter it (filename) + datetimestamp. </li>
+        <li>It will contain "parents:" , behind it, it will list all things where it found this in. E.g. if an object contains
+            "nl_NL" it will add the filename of that object in there. This is for perfomance reasons, to reconstruct the
+            original data if all else is lost and maybe for reverse engineering types from text files versus a virtual index
+            on the items
+        <li>It will contain "value:", where the content is placed e.g. "NL_nl"</li>
+    </ul>
+</p>
+<h3>Classification Folder: Type/Simple (a group of terms in a taxonomy)</h3>
+<p>
+    When we find a new type in the content / objects we will move all files in things to a new subfolder in things with the name of the type
+    (either a GUID or a name).
+    We will also create a powershell ps1 file inside the folder types that references the new folder.
+    In this powershell file we can define constraint, workflows or other special behavior for this type.
+</p>
+<h3>Classification Folder: Type/Complex  (a group of groups terms in a yet another taxonomy)</h3>
+<p>
+    When we find combinations of types being new types. We will create a ps1 file with a GUID under complex types which lists the folders
+    of the simple types as a constraint.
+    We will have the option to name it and have the option to add special constraints or behaviors for it.
+    This will also include a template (or more) for a certain complex type. These templates can be used to quickly create content
+    in the Raw Data Folder.
+</p>
+<h3>Classification Folder: Content (Objects) (which links the values to the types)</h3>
+<p>
+    This is where store the combination of values in relation to types. E.g. if we find attribute "language" on a "title" inside a "item"
+    we store language 3342 to title 4343 to item 45454.
+</p>
+<h3>Raw Data Folder: Data</h3>
+<p>
+    Here we raw dump all data. The text files will are stored in various formats. The objects have
+    relations to other objects e.g. we could split the wordpress backup file to "blog file" and have all the individual blog items
+    as individual text files.
+    A (in time smart) parser will run over the folder and determine where what is placed.
+    A ps1 file will help with the specific template for new content (auto generated in the complex type folder), it could be
+    however that after saving the system will "type" it as something differently e.g. if i base it on "post with title" and
+    leave off the title it will be classified as "post without a title".
+</p>
+<h3>Classification Folder: Taxonomy (which links a type to a group of terms)</h3>
+<p>
+    While the singular contents above already define a taxonomy. Under taxonomy we can make relations of types which we will can give
+    a GUID or a name. E.g. if there are posts without a title and posts with a title we can either make this a complex type with
+    a variable title which may be empty OR we make it a taxonomy where both types derive from the taxonomy term post and have child
+    terms "post without title" and "post with title". The latter are types. The "post" is only a taxonomy term.
+    Or e.g. if we have NL as main language we can have NL_nl and NL_be as as child taxonomy terms, which are all of the type
+    language (or if we decide later, of different types), depending if we regard them as different types they will be placed
+    in different folders.
+</p>
+<h3>Folder: Index</h3>
+<p>
+    This will contain indexes to allow for fast searching based on content or type or taxonomy.
+</p>
+<h3>Overall</h3>
+<ul>
+    <li>Every GUID should be unique over all items, this allows to build a flattened singular list.</li>
+</ul>
 <hr />
 <ul>
     <li>Using: <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+    <li>Contact: <a href="https://github.com/projectje/projectje.github.io/issues">Contact</a></li>
 </ul>
-<script id="dsq-count-scr" src="//cogmios.disqus.com/count.js" async></script>
 </body>
 </html>
