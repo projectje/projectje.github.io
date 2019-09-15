@@ -77,7 +77,21 @@
     so it is posted. Maybe copy based on existing item is then the handiest. So I could have 5000 postings with a "tag", and then i make 200 postings with a "tag",
     the system will then classify the ones with tag as a child-type of the non-tag type posting. Once this has been done, we can give names to the types
     it found and link in some other meta stuff for that type it found. Since now there are real physical copies of such a type versus beforehand creating
-    these types. 
+    these types. A taxonomy on the other hand is based on each individual property, so if a set of things have "tag" as property then a taxonomy auto exists.
+    Since there are parent-child relationships, each property can have a parent.
+    Individual properties are also things. When they are the same they form a type and a taxonomy. They also can have parent-child relationships.
+    Properties can have attributes. These attributes are also things. More or less the same story.
+    So a thing post holds a thing title which holds a thing language. The thing language holds only content and no further properties. So we can
+    make a list of all entries for language in our system which in my case is only NL_nl and En_en. The thing title sometimes holds the property
+    language and sometimes not. But since the type-hint is called "title" and it contains content, the system knows that we have a type language
+    that sometimes holds these properties and sometimes not. The parser will need to have input on show title where language=Nl_nl. But the result of this
+    is also a thing. So for the resulting blogpost it goes the same: we should give some example of the result and the system would then need
+    to fiddle out the type of thing we want to produce. <br />
+    The folder structure on disk is only allowing for one hierachy, so we need another mechanism for all the hierachies the system finds. For classification:
+    If a new item holds no title, then it can be considered the parent of the old item since the new item  just adds an item but time-wise it is a child,
+    so the creation dates of things play a role. If something is newer then it will always be a child not a parent. A thing itself can only change in time,
+    e.g. a blog post we change, it might even become a different type e.g. if we remove the title. So a thing can be a of a different type during time.
+    But can only be one thing at a certain time.
 </p>
 
 </body>
