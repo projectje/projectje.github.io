@@ -6,15 +6,61 @@
 <h1>Projects GitHub Pages Site</h1>
 <h2></h2>2019-9-2015</h2>
 <p>
-Was on my todo list but today added a  page (<a href="https://pages.github.com/"> pages </a></a>)
-Instead of using a tool like <a href="https://jekyllrb.com/">Jekyll</a> I think I will create something in PowerShell that will
-generate my static pages. Undoubtly someone has already made this but its probably only a few hours work (...) to do so.
-I think there will be something like posts. When I started blogging the concept of a headline did not exist, i think I will revert
-to this, since headlines became SEO and is way to pretentious. It will need some taxonomy (tags,categories, projects), a search system,
-a comment system, a way to store media, a way to handle links outdated, special sections for specific topics, etc... so in the end
-it might be more than a few hours work.
+    Was on my todo list but today added a  page (<a href="https://pages.github.com/"> pages </a></a>)
+    Instead of using a tool like <a href="https://jekyllrb.com/">Jekyll</a> I think I will create something in PowerShell that will
+    generate my static pages. Undoubtly someone has already made this but its probably only a few hours work (...) to do so.
+    I think there will be something like posts. When I started blogging the concept of a headline did not exist, i think I will revert
+    to this, since headlines became SEO and is way to pretentious. It will need some taxonomy (tags,categories, projects), a search system,
+    a comment system, a way to store media, a way to handle links outdated, special sections for specific topics, etc... so in the end
+    it might be more than a few hours work.
+</p>
+<p>
+    Probably there are little pieces of content which have a type e.g. a post, page, bookmarks and so on, each of these have properties
+    and the properties can be complex and custom. Each of these pieces of content can have a specific workflow attached, which is code.
+    So I think each of these pieces of content is an object based on a class. So probably there needs to be folder class definitions first.
+    Classes have their own taxonomy.<br />
+    To import tens of thousands of wordpress posting (and before wordpress from the end 90's). Its probably handy to include the properties
+    that WordPress exports in its backup XML file, so that a mass conversion is the easiest this will be:
+    <ul>
+        <li>item
+            <ul>
+                <li>title</li>
+                <li>link</li>
+                <li>pubDate</li>
+                <li>dc:creator</li>
+                <li>guid with indication if permalink</li>
+                <li>description</li>
+                <li>content:encoded which is a CDATA item</li>
+                <ul>
+                    <li>this contains relative and fixed paths so a conversion needs to run here</li>
+                    <li>it would also be nice if a linkchecker removes any links that are outdated</li>
+                    <li>some spellchecker would be very nice...</li>
+                </ul>
+                <li>expert: idem also encoded Cdata, in my case mostly empty</li>
+                <li>wp:post_id might be handy to keep as reference</li>
+                <li>wp:post_date might be handy to keep as reference</li>
+                <li>wp:post_date_gmt idem</li>
+                <li>wp:comment_status idem</li>
+                <li>wp:ping_status idem but never used it</li>
+                <li>wp:status idem</li>
+                <li>wp:post_parent</li>
+                <li>wp:menu_order</li>
+                <li>wp:post_type</li>
+                <li>wp_post_password probably useless in new system</li>
+                <li>wp:is_sticky probably handy to convert to equal functionality</li>
+                <li>category domain niceame cdata : will convert these but keep the old ones around for reference</li>
+                <li>wp:postmeta consisting of wp:meta_key and wp_meta_value (CDATA) will convert these but keep old ones around for reference</li>
+
+            </ul>
+        </li>
+        I think I have roughly 20.000 individual postings since 99, problem is that I sometimes posted things I dont agree with anymore, and also
+        it contains a gazillion links that no longer exists or where there are now different sites. So I might in the end need to check them one by ones
+        and add some annotation OR put some annotation above like "not re-reviewed yet disclaimer" or something alike.
+    </ul>
+
 
 
 </p>
+
 </body>
 </html>
