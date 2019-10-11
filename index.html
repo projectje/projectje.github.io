@@ -12,169 +12,187 @@
                 font-size: 12px;
             }
         </style>
-        <title>Cogmios' (Future) Static Place</title>
+        <title>The FOCUS budget - a better family budget</title>
     </head>
 <body>
-<h1>Cogmios' (Future) Static Place</h1>
-<pre>
-    ░░░░░░░░░░░░░░░░░░░░░░█████████
-    ░░███████░░░░░░░░░░███▒▒▒▒▒▒▒▒███
-    ░░█▒▒▒▒▒▒█░░░░░░░███▒▒▒▒▒▒▒▒▒▒▒▒▒███
-    ░░░█▒▒▒▒▒▒█░░░░██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██
-    ░░░░█▒▒▒▒▒█░░░██▒▒▒▒▒██▒▒▒▒▒▒██▒▒▒▒▒███
-    ░░░░░█▒▒▒█░░░█▒▒▒▒▒▒████▒▒▒▒████▒▒▒▒▒▒██
-    ░░░█████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██
-    ░░░█▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒██
-    ░██▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒██▒▒▒▒▒▒▒▒▒▒██▒▒▒▒██
-    ██▒▒▒███████████▒▒▒▒▒██▒▒▒▒▒▒▒▒██▒▒▒▒▒██
-    █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒████████▒▒▒▒▒▒▒██
-    ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██
-    ░█▒▒▒███████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██
-    ░██▒▒▒▒▒▒▒▒▒▒████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█
-    ░░████████████░░░█████████████████
-</pre>
-<h2></h2>September 2019</h2>
-<p>
-    Was on my todo list but today added a  page (<a href="https://pages.github.com/"> pages </a></a>)
-    Instead of using a tool like <a href="https://jekyllrb.com/">Jekyll</a> I think I will create something in PowerShell that will
-    generate my static pages. Undoubtly someone has already made this but its probably only a few hours work (...) to do so.
-    I think there will be something like posts. When I started blogging the concept of a headline did not exist, i think I will revert
-    to this, since headlines became SEO and is way to pretentious. It will need some taxonomy (tags,categories, projects), a search system,
-    a comment system, a way to store media, a way to handle links outdated, special sections for specific topics, etc... so in the end
-    it might be more than a few hours work.
-</p>
-<p>
-    Probably there are little pieces of content which have a type e.g. a post, page, bookmarks and so on, each of these have properties
-    and the properties can be complex and custom. Each of these pieces of content can have a specific workflow attached, which is code.
-    So I think each of these pieces of content is an object based on a class. So probably there needs to be folder class definitions first.
-    Classes have their own taxonomy.<br />
-    To import tens of thousands of wordpress posting (and before wordpress from the end 90's). Its probably handy to include the properties
-    that WordPress exports in its backup XML file, so that a mass conversion is the easiest this will be:
-    <ul>
-        <li>item
-            <ul>
-                <li>title</li>
-                <li>link</li>
-                <li>pubDate</li>
-                <li>dc:creator</li>
-                <li>guid with indication if permalink</li>
-                <li>description</li>
-                <li>content:encoded which is a CDATA item</li>
-                <ul>
-                    <li>this contains relative and fixed paths so a conversion needs to run here</li>
-                    <li>it would also be nice if a linkchecker removes any links that are outdated</li>
-                    <li>some spellchecker would be very nice...</li>
-                </ul>
-                <li>expert: idem also encoded Cdata, in my case mostly empty</li>
-                <li>wp:post_id might be handy to keep as reference</li>
-                <li>wp:post_date might be handy to keep as reference</li>
-                <li>wp:post_date_gmt idem</li>
-                <li>wp:comment_status idem</li>
-                <li>wp:ping_status idem but never used it</li>
-                <li>wp:status idem</li>
-                <li>wp:post_parent</li>
-                <li>wp:menu_order</li>
-                <li>wp:post_type</li>
-                <li>wp_post_password probably useless in new system</li>
-                <li>wp:is_sticky probably handy to convert to equal functionality</li>
-                <li>category domain niceame cdata : will convert these but keep the old ones around for reference</li>
-                <li>wp:postmeta consisting of wp:meta_key and wp_meta_value (CDATA) will convert these but keep old ones around for reference</li>
+<h1>The FOCUS budget - a better family budget</h1>
+<h2>The budget</h2>
 
-            </ul>
-        </li>
-        I think I have roughly 20.000 individual postings since 99, problem is that I sometimes posted things I dont agree with anymore, and also
-        it contains a gazillion links that no longer exists or where there are now different sites. So I might in the end need to check them one by ones
-        and add some annotation OR put some annotation above like "not re-reviewed yet disclaimer" or something alike.
-        Also since I have multiple backups of different blogs, might need to find a mechanism to filter out duplicate entries, since I did some conversions
-        in between, might not be 1:1.
-    </ul>
+<ul>
+    <li>Until you buy a house / family of your own / etc , life is cool, no need for complex things</li>
+    <li>Then .. complexity starts and "no-time-for-anything-else" and you get "responsibility" and "husband-wife" discussions (or nowadays
+        other sex combinations), mostly this is when the concept "budget" starts to make sense: it clears your mind because it gives you answers</li>
+    <li>Then you get really old, you live of your money that you set set aside and then you die, having a funeral paid by the insurance you
+        paid for years</li>
+</ul>
+<p>
+    This will not change. Bummer.
 </p>
 <p>
-    So to do this incremental the simplest way to start is probably to have a sidebar with each individual blog entry. That can later be replaced by
-    tags, categories, aggregated blog overviews etc. "Styling" is something that go on endless so dont care about this. What is maybe important is the
-    translation or indication if items are in Dutch or in English. Have to think about this but it might be a label OR very pretentious holds a master item
-    with links to various translations. that would require a subdir for each post e.g. NL_nl for dutch and only in there the content, title and such while
-    other meta properties reside one level higher. But that is too labor intensive.
+What can be improved is the hundreds of years old way of keepin a budget. While it does do a job giving a family some insights, it
+does not help greatly with decisions and only partly gives the insight that a family really needs.
 </p>
-<h2>Setup of New System</h2>
 <p>
-I think... it will be something like this: <br />
-I want to stay away from defining types upfront such as "addressbookentry", "blogpost", "bookmarks" and also stay away from upfront defining
-a taxonomy of things such as TAG X or category Y.
-I wonder if the approach will work to start off with the bottom to top instead of top to bottom: just placing all content
-the system finds in individual files (tens of thousands) and let the system classify (or probably a human) it to types and taxonomy.
+This is where the FOCUS budget comes along: a really simple re-grouping of budget posts: instead of grouping your budget in "incoming money"
+and "outgoing money", we split the budget in "things you need to discuss" and "things you do not need to discuss". A complete new paradigma
+which will decrease the time you need to spend on "budget", while increasing the insight a lot. It means you will make better decisions, and
+better decisions lead to a happier life.
 </p>
-<h3>Parsed Data Folder: Value ("Things", "The real stuff", the "yet unstructured data")</h3>
-This can contains known things ("typed") and unknown things. If we know the thing e.g. it had a xml key or a json key then it will be placed
-in a subfolder with the name of that key. It is then the assumption on that content. Later on we may manually make different choices on
-the subfolders through extra rules. Later on this may also involve the content parts themselves e.g. if we find "red" in a blogposting, we
-could auto classify it.<br />
-Some items will naturally become types (or enumerations) but things found only once or twice are harder.
+<h2>Try it yourself</h2>
 <p>
-    A folder "values" will contains textfiles with a part of the name found along with a guid.
+On the top level you divide your life, INSTEAD of "incoming money" and "outgoing money" in these 7 parts:
+<ul>
+    <li>A. Income</li>
+    <li>B. Family</li>
+    <li>C. Discussion</li>
+    <li>D. No Discussion</li>
+    <li>E. Your Stuff</li>
+    <li>F. Your Relations</li>
+    <li>G. Plan</li>
+</ul>
+<p>
+:
+</p>
+<h3>A. Income</h3>
+<p>
+    Here you will only have  2 posts with the expected income. Since you know your salaries, this should be simple
     <ul>
-        <li>The filename will be part of the text + a GUID.  I could have used the date-time instead but it would create
-            too many duplicates. Since a new thing  can arise on exact the same moment, in a different place. In theory we
-            could also name it the first time we encounter it (filename) + datetimestamp. </li>
-        <li>It will contain "parents:" , behind it, it will list all things where it found this in. E.g. if an object contains
-            "nl_NL" it will add the filename of that object in there. This is for perfomance reasons, to reconstruct the
-            original data if all else is lost and maybe for reverse engineering types from text files versus a virtual index
-            on the items
-        <li>It will contain "value:", where the content is placed e.g. "NL_nl"</li>
+        <li>your income</li>
+        <li>the income of your partner</li>
+    </ul>
+    <p>
+        So here no "tax returns for paid rent mortgage", no "child support subsidy", just "your income".
+        This is the place however to put your pension here if you receive a pension or wellfare or anything alike.
+    </p>
+    <p>
+        This is a section you will never to look at again, unless you want to move up or start a side-business. An advantage of structuring this
+        way is that you will much clearer see the impact of a side-business e.g. selling cats versus "doing away netflix": since there are
+        2 ways to improve a budget. but if you mix it up, it becomes fuzzy. A family typically will move to "save money on gas or netflix"
+        with a traditional budget. "A budget is keeping spending under control". But with this grouping, the mindset will change: "A budget
+        gives me starting thoughts on how to increase income" (which is better).
+    </p>
+</p>
+<h3>B. Family</h3>
+<p>
+    Here you will have 1 post per family member with an assigned budget
+    <ul>
+        <li>Dad</li>
+        <li>Mum</li>
+        <li>Kid 1</li>
+        <li>Kid 2</li>
+        <li>Kid 3</li>
+    </ul>
+    <p>
+        You can put here the "received child support subsidy for kid 1" (as a +) and the school costs, sport costs, daycare costs
+        for kid 1 (as a "-"). This will tell you exactly over the years "how much does a kid cost" and will give you much more insight
+        on the total budget for a kid than putting it simply in "income". You can make subposts for the things that are large chunks or
+        you think that are important to keep track off e.g. "glasses once per 4 years divided over 4 years" or "barber".
+    </p>
+    <p>
+        This is a non-discussion post. It is simple: you assign it and that is it. No need to discuss. You will find that the items
+        you assign to family members in this section will move away "fuzzyness in your mind" because they are moved away from the
+        thing you should be focussing on. In other words: it makes it clearer where you should focus on.
+    </p>
+</p>
+<h3>C. Things to discuss / Yearly choice</h3>
+<p>
+    This section is the only section that is of importance. All the items you put here are the things that you have influence on
+    and which directly have impact. By moving everything else way, this set is small and clear, making money discussions SMART and clear.<br />
+    Once every year, somewhere at the end, you will have 1 (one) longer discussion on how you are going to divide your money for the next year.<br />
+    It contains of 3 parts:
+    <ul>
+        <li>Subscriptions</li>
+        <li>Pay Debts</li>
+        <li>Leisure</li>
+        <li>Savings</li>
+        <li>Stuff</li>
+    </ul>
+    <p>
+        <b>Subscriptions</b> are all the things you pay for regularly but where in theory you live without e.g. newspaper, netflix, X-Box Live,
+        Internet Max 500 Gigbyte subscrption, TV All Channels, Library, Lottery's, charities, domain names, hosting, spotify, funeral-insurance,
+        and so on. The total amount while amaze you.<br />
+        <b>Pay Debts</b> here you put the amount of money you want to pay to a debtor (not the debt itself) e.g. if you want to pay back
+          1000 euro extra on your mortgage this year, then here it goes<br />
+        <b>Leisure</b> here you put the posts of the money you spend or earn with leisure time: vacation , days off, flowers, gifts,
+          party's and possibly also you cat or dog.<br />
+        <b>Saving</b> here you put all your savings accounts e.g. the money you put away for when your kid goes to university or your
+          post for when sometimes in your house breaks down e.g. a car or a refrigerator</br>
+        <b>Stuff</b> here you put the list of things that you want to buy this year for your house or around your house e.g. paint job,
+          a new table or a large garden improvement
+    </p>
+    <p>
+        Between these 5 topics you will divide that money that is left when you do A-B-D = C. Since A, B and D are "fixed": this is the
+        amount of money where you can decided on to either save everything for later or just spend everything on one big party. Since everyone
+        has a differnt viewpoint on "life and fun", this is where the discussion lies in a household e.g. my wife wants to have a far away vacation
+        for 15.000 euro, because she works so hard the rest of the year, while I just want to sit in a garden for 0 euro and rather put the 15.000
+        euro in savings acount or pay of morgage. And whil I do not care about Netflix at all, my kids will kill me if I would stop it. So I take
+        my loss here. Note that you do not put "mobile phone subscriptions" in here, since these are in category B: they belong to the per person budget.
+        Category C is only for items where the whole family benefits from. Not just 1 person.
+    </p>
+</p>
+<h3>D. No Discssion needed</h3>
+<p>
+    In here you put all the things that you have no control of. They are useless to spend energy on debatting or worrying about. just put
+    them here and once in a while check that nothing went way of expected. You are only in this section to move from one supplier to
+    another supplier e.g. another energy supplier. Typically this will be closer to double the budget for #2.<br />
+    Examples of what you put here:
+    <ul>
+        <li>Paypal/Mastercard/Bank Transactions - where you have no clue where to put it on since you dont know, this should be 0 but never is</li>
+        <li>Groceries - split it in "take away" and "non take away" to know the balance for all those pizzas</li>
+        <li>Mortgage - here you put the tax return for rent-paid (as +) and the rent and other mortgage costs  (as a -)</li>
+        <li>Transportation - costs for bike, care (insurance, gas, taxes), public transporation, parking, car wash and such</li>
+        <li>Groceries - all groceries other than food, this should be a small amount typically</li>
+        <li>Living - costs for energy, gas, costs for house insurances, costs for taxes to the city, costs for water taxes and so on (as a -) but non mortgage tax returns as (+)</li>
+        <li>Health care - costs for health insurance, dentist (as a -) but also the returns you get (as a +) </li>
     </ul>
 </p>
-<h3>Classification Folder: Type/Simple (a group of terms in a taxonomy)</h3>
+<h3>E. Stuff</h3>
 <p>
-    When we find a new type in the content / objects we will move all files in things to a new subfolder in things with the name of the type
-    (either a GUID or a name).
-    We will also create a powershell ps1 file inside the folder types that references the new folder.
-    In this powershell file we can define constraint, workflows or other special behavior for this type.
+    This category is not in your budget. <br />
+    Keep it offline in a tool or spreadsheet or OneNote. Here you will make a list of your stuff and this is where you will keep
+    important information, contact information, bills, manuals, SIM card codes, and so on. If you divide a bit smartly, it
+    will give you after some time, a good view on your stuff and you will never have to look up stuff anymore. I have divided this
+    in household devices, my home network and info, clothings (and sizes), software, electronics, lamps and lighting and so on.
+    But I also put here recipes from my mother and when I need need to buy stuff e.g. weird battery for weird lamp, internet links
+    on stuff I buy (or sell). <br />
+    In time you can use this to get a managing replacements, how much money is in your stuff in total and for how much you need to insure it.
+    But also is handy when you quickly need information and dont have to stress out searching a gazillion papers for a number.
 </p>
-<h3>Classification Folder: Type/Complex  (a group of groups terms in a yet another taxonomy)</h3>
+<h3>F. Relations</h3>
 <p>
-    When we find combinations of types being new types. We will create a ps1 file with a GUID under complex types which lists the folders
-    of the simple types as a constraint.
-    We will have the option to name it and have the option to add special constraints or behaviors for it.
-    This will also include a template (or more) for a certain complex type. These templates can be used to quickly create content
-    in the Raw Data Folder.
+    Here you keep a list of (important) persons. So your parents and their birthdays and marriage dates, the ones from friends and other
+    family but also persons which are needed because you are now a parent: e.g. the telephone number of the local daycare or the
+    school teacher's phone number: so that both you are your partner have always the latest emergency numbers in one place and
+    with the gazillion fully planned weekends can check birthdays and addresses to drive to. An import from the phonebook from both
+    your partner's phone and your own phone AND your kid's "class friends lists" is a good start. So when your kid is gone also
+    you can call other mums to check if he or she is there.
 </p>
-<h3>Classification Folder: Content (Objects) (which links the values to the types)</h3>
+<h3>G. PLAN</h3>
 <p>
-    This is where store the combination of values in relation to types. E.g. if we find attribute "language" on a "title" inside a "item"
-    we store language 3342 to title 4343 to item 45454.
+    The plan category contains the following single pages:
+    <ul>
+        <li>Long Term Plan - a sheet with per line 1 year and for every family member and the house, one column - in every year you note ages of family members and important events e.g. "2032 we are
+            expected to go on retirement", when you start with your birth year it will give you a good high level overview of your life (and the lives
+        you are now responsible for)</li>
+        <li>TODO - a family todo list of items, takes aways the pain of repeating things a gazillion times. Create subpages for things that are too difficult to do at once e.g. research for which new TV im going to buy</li>
+        <li>Emergency - a list of emergency phone numbers and things to do</li>
+        <li>Rules - IF you have kids ... put bedtimes and other related things here (although you know it is useless at least you try)</li>
+        <li>Agenda - we have a shared agenda using Outlook so we all have a good view on IF we can plan something on a certain weekend, since
+            we all indepedently plan things, and it makes it much quicker to see if there is something free on a certain weekend.</li>
+    </ul>
 </p>
-<h3>Raw Data Folder: Data</h3>
 <p>
-    Here we raw dump all data. The text files will are stored in various formats. The objects have
-    relations to other objects e.g. we could split the wordpress backup file to "blog file" and have all the individual blog items
-    as individual text files.
-    A (in time smart) parser will run over the folder and determine where what is placed.
-    A ps1 file will help with the specific template for new content (auto generated in the complex type folder), it could be
-    however that after saving the system will "type" it as something differently e.g. if i base it on "post with title" and
-    leave off the title it will be classified as "post without a title".
+That's it. By moving your budget from an "incoming money" to "outgoing money" chore, you integrate it in your flow. And by leveraging on this
+you will gain new insights. With these new insights your brain will get clearer and you will make better decisions and have your life under
+better control
 </p>
-<h3>Classification Folder: Taxonomy (which links a type to a group of terms)</h3>
+<h2>Budget Tools that support the focus budget</h2>
 <p>
-    While the singular contents above already define a taxonomy. Under taxonomy we can make relations of types which we will can give
-    a GUID or a name. E.g. if there are posts without a title and posts with a title we can either make this a complex type with
-    a variable title which may be empty OR we make it a taxonomy where both types derive from the taxonomy term post and have child
-    terms "post without title" and "post with title". The latter are types. The "post" is only a taxonomy term.
-    Or e.g. if we have NL as main language we can have NL_nl and NL_be as as child taxonomy terms, which are all of the type
-    language (or if we decide later, of different types), depending if we regard them as different types they will be placed
-    in different folders.
+There are countless budget tools. And in here we are open for suggestions for tools that support the Focus budget grouping of posts versus
+the old "income" / "outcome" grouping.
 </p>
-<h3>Folder: Index</h3>
 <p>
-    This will contain indexes to allow for fast searching based on content or type or taxonomy.
+Mail me at <a href="mailto:focus@ed.je">focus@ed.je</a> for your comments and remarks or improvements.
 </p>
-<h3>Overall</h3>
-<ul>
-    <li>Every GUID should be unique over all items, this allows to build a flattened singular list.</li>
-</ul>
-<hr />
-<ul>
-    <li>Using: <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
-    <li>Contact: <a href="https://github.com/projectje/projectje.github.io/issues">Contact</a></li>
-</ul>
 </body>
 </html>

@@ -1,2 +1,2 @@
 # projectje.github.io
-GitHub Pages Test
+see /index.html
