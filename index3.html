@@ -1,0 +1,138 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Het A-B-C=D Focus Budget - een handigere taxonomie voor gezins budgetten">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <title>&#128106; Het A-B-C=D Focus budget - een betere taxonomy voor het familie budget</title>
+</head>
+<body>
+
+        <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link"  href=".\index.html">Intro</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href=".\index2.html">Achtergrond</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link  disabled" tabindex="-1" aria-disabled="true"  href=".\index4.html">Budget Sheet Download</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link  disabled" tabindex="-1" aria-disabled="true"  href=".\index5.html">Ervaringen en tips per post</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link  disabled" tabindex="-1" aria-disabled="true"  href=".\index3.html">Volgende stap: verbeteringen bouwen</a>
+                </li>
+              </ul>
+
+<div class="container">
+    <h1  class="display-4">&#128106; Het model en de software</h1>
+    <p>
+        Op dit moment gebruiken we een spreadsheet, wat prima werkt. Voor geavanceerdere ideeen is een ander software
+        platform nodig. Vandaar de keuze om deze pagina te hosten op GitHub.<br />
+        Deze pagina fungeert als een verzamelplaats voor ideeen voor zowel het model als de software. <br />
+        Het uiteindelijk droomdoel is om een stuk gezins-software te hebben dat alle gezinsprocessen
+        herkent en daarbij kan adviseren of helpen ,liefst met zoveel mogelijk integratie naar 3rd party's
+        en gratis op GitHub. Dit zal dus geen budget of personal finance tool zijn omdat we denken dat
+        een gezins module veel breder is maar wel moet kunnen integreren met "budget posten" e.d. omdat het
+        "gezin" is, moet informatie die de een veranderd, gelijk zichtbaar zijn voor de ander.
+    </p>
+
+<!--
+    Transactie Model
+-->
+
+
+<div class="p-3 mb-2 bg-primary text-white"><h2>Het Transactie Model</h2></div>
+<div class="row">
+    <div class="col-sm-9">
+        Transactie functionaliteit op dit moment in het sheet: <br >
+        Transacties worden nu geimporteerd in een sheet. Daarna worden ze gelabeled en worden er andere slimme operaties
+        op uitgevoerd zoals het herkennen van het pasnummer bij persoon. <br />
+        Er zijn totaalsheet in een oogopslag over jaren, maanden, per post of totalen direct een goed overzicht geven.<br >
+        Per post is dan nog informatie zoals verloop grafiek en ruimte voor analyse, iets slimmere auto analyses zouden
+        handig zijn<br >
+        Een meer open verwerkings engine die regels e.g. vanaf github ophaalt waar ze gedeelt kunnen worden zou handig zijn <br />
+        In den beginne links per post naar de pakweg top 25 vergelijkings en informatie sites over het onderwerp zouden ook
+        handig zijn ter deling.<br />
+        De Taxonomie moet open zijn: we willen aantal "by convention" groepen toevoegen, waarvan we weten dat iedereen
+        deze gebruikt. Hier zijn veel websites over. We moeten een mapping component toevoegen die kan mappen
+        tussen die verschillende taxonomies.<br />
+        Er zijn nog veel ideeen ter verbetering maar dit is een klein stapjes vooruit ten opzicht van het huidige spreadsheet.
+        </ul>
+    </div>
+</div>
+
+<!--
+    Gezins Model
+-->
+
+<div class="p-3 mb-2 bg-primary text-white"><h2>Het Gezins Model</h2></div>
+<div class="row">
+    <div class="col-sm-9">
+            Dit zou het onderdeel moeten zijn met de eenvoudige "GUI", gebruikers zouden nooit direct naar de
+            transactie module moeten hoeven gaan. Tenzij ze dat prefereren, e.g. om langzaam erin te rollen.<br />
+            We kunnen hier hard van stapel lopen maar in principe om het scopen zijn alle posten die op dit moment
+            gelinked zijn aan "groepen transacties" kandidaat om uit te breiden tot software modules met varieerende
+            functionaliteiten "alle". Zo zou de energie module, automatisch voorstellen moeten doen en in een volgende
+            fase ook moeten adviseren op basis van een veelvoud aan informatie bronnen. In beginsel kan elk van deze
+            modules een link pagina hebben naar vergelijkingssites, apps, tools, etc... Deze verzameling moet wel "open"
+            zijn. Een bestaand bookmark project dat uit browser urls haalt en deze in pagina's omtovert kan als
+            basis hiervoor gebruikt worden. (een github directory bevat dan louter folders met .URL ini files).
+            Dit is software matig vrij eenvoudig te realiseren.<br />
+            Zo zou een groot deel van de informatie die we nu in OneNote hebben, in het tool kunnen belanden.<br/>
+            Een specifiek onderdeel is de contacten die we nu in OneNote bijhouden: in grotere bedrijven zijn dit CRM
+            systemen. Dit zou een onderdeel kunnen zijn wat ook op de shortlist staat om te voegen, omdat hier dan
+            automatisch voor elke "post" (of de toekomstige naam) adres en contactgegevens van een suppplier toegevoegd
+            kunnen worden.<br />
+            Andere standaard onderdelen zijn de noodnummers pagina, de lange termijn lijst, de taxonomie van alle spullen
+            die we in huis hebben en de korte termijn todo pagina.<br />
+        </ul>
+    </div>
+</div>
+
+
+<div class="p-3 mb-2 bg-primary text-white"><h2>De Software</h2></div>
+<div class="row">
+    <div class="col-sm-9">
+        <ul>
+            <li>Als het model er staat kan de software in elke taal geimplementeerd worden.</li>
+            <li>Een elektron client is een optie als eerste platform om de functionaliteit die nu in het spreadsheet zit te porteren.
+                Omdat het op meerdere platformen tegelijkertijd te deployen valt en delen van de code herbruikbaar zijn en
+                omdat het een eenvoudige "klik run" ervaring is. Daarnaast zijn er ontzettend veel developers met ervaring
+                in JavaScript dus het is eenvoudig om code bij te dragen. Een C# Core client is een ander idee, ook vrij
+                eenvoudig en snel te bouwen een een grote set van open componenten voor beiden is beschikbaar. Dus er kan
+                snel functionaliteit worden toegevoegd.
+            </li>
+            <li>
+                Gezinnen moeten onderling informatie kunnen uitdelen, dus er moet een communicatie laag zijn die
+                (veilig) pear to pear kan communiceren. Er zijn een aantal 3rd party programma's die interessant zijn
+                om hier een keuze uit te maken.
+            </li>
+            <li>
+                Gebruikers die een aankoop willen doen bijvoorbeeld een stofzuiger gaan op DAT moment vergelijken. Dus
+                een spreadsheet component (met filter) o.i.d. kan een gemeenschappelijke bij te houden lijst zijn met features en
+                prijzen. De gebruiker spaart aan de ene kant tijd hierdoor aan de andere kant zit hij nu in de modus om
+                te vergelijken dus kan hij net zo goed het bestaande sheet updaten en dat als bron nemen. iedereen
+                profiteert hiervan. De data wordt dan in een github repository opgeslagen, zodat deze ook buiten het
+                programm om geupdated, geraadpleegd kan worden.
+            </li>
+            <li>Waarschijnlijk is er een server variant benodigd, als alle data in GitHub repositories wordt opgeslagen,
+                bijvoorbeeld het delen van herkennings regels, urls, tips en data, dan zou dit gelijk geversioneerd zijn en "open".
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+
+</div>
+
+</body>
+</html>
