@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Het A-B-C=D Focus Budget - een handigere taxonomie voor gezins budgetten"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>
+      &#128106; Het A-B-C=D Focus budget - een betere taxonomy voor het familie
+      budget
+    </title>
+  </head>
+  <body>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href=".\index.html">Intro</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href=".\index2.html">Achtergrond</a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link  disabled"
+          tabindex="-1"
+          aria-disabled="true"
+          href=".\download.html"
+          >Budget Sheet Download</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link  disabled"
+          tabindex="-1"
+          aria-disabled="true"
+          href=".\index5.html"
+          >Ervaringen en tips per post</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href=".\index3.html"
+          >Volgende stap: verbeteringen bouwen</a
+        >
+      </li>
+    </ul>
+
+    <div class="container">
+      <h1 class="display-4">&#128106; Excel Bestand</h1>
+
+      <div class="p-3 mb-2 bg-primary text-white"><h2>Tabbladen</h2></div>
+
+      <p>
+        Het basis Excel sheet is simpel bestaat uit 3 sheets:
+        <ol>
+            <li>
+                In het eerste sheet copy en paste je simpelweg de bank-exports van al je transacties. In ons spreadsheet
+                hebben we er rond de 17.000 in staan vanaf 2005. Hiernaast staan een extra kolommen zoals:
+                <ul>
+                    <li>Een kolom waarin je een term/category/post/label kunt plaatsen bij die specifieke transactie</li>
+                    <li>Die kolom wordt automatisch gevuld door het categorizatie script maar... als je hem zelf
+                        al ingevuld hebt dan zal je eigen keuze niet overschreven worden.
+                    </li>
+                    <li>Als de auto categorizatie een andere waarde vindt dan die jezelf ingevuld hebt dan zal deze in
+                        een kolom ernaast geplaatst worden, handig als dubbelcheck
+                    </li>
+                    <li>
+                        Een kolom die ons verteld wie de transactie gedaan heeft aan de hand van het pasnummer (als
+                        het een betaling was met een pasnummer)
+                    </li>
+                    <li>
+                        Kolommen met subcategorieen als het label puntjes bevat, puntjes worden opgevat als hierarchie
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Sheet waar je regels in kunt noteren bijvoorbeeld: rekeningnummer X is label "donald duck"
+                <img src="sheet1.JPG" alt="sheet1">
+            </li>
+            <li>
+                Een sheet waarin alle labels staan, zodat je ze handig uit een pulldown menu kunt selecteren. Op diezelfde
+                sheet staat achter die kolom het "totaal" en dan per jaar het totaal. Zo fungeert die slide als lijst
+                van je labels en tegelijkertijd als een snel overzicht.
+            </li>
+        </ol>
+
+        <div class="p-3 mb-2 bg-primary text-white"><h2>Categorizatie script</h2></div>
+
+        Het categorizatie script leest alle regels in sheet 2 en brengt de labels aan in sheet 1
+        <br /><br />
+
+        <pre class="prettyprint">
+                #If False Then
+                Dim Range, Accounts, BudgetLine, Category, Color, RowContent
+            #End If
+            Option Explicit
+
+            Function Col_Letter(lngCol As Long) As String
+                Dim vArr
+                vArr = Split(Cells(1, lngCol).Address(True, False), "$")
+                Col_Letter = vArr(0)
+            End Function
+
+
+            Sub OptimizeCode_Begin()
+
+                Application.ScreenUpdating = False
+                EventState = Application.EnableEvents
+                Application.EnableEvents = False
+                CalcState = Application.Calculation
+                Application.Calculation = xlCalculationManual
+                PageBreakState = ActiveSheet.DisplayPageBreaks
+                ActiveSheet.DisplayPageBreaks = False
+            End Sub
+
+            Sub OptimizeCode_End()
+                ActiveSheet.DisplayPageBreaks = PageBreakState
+                Application.Calculation = CalcState
+                Application.EnableEvents = EventState
+                Application.ScreenUpdating = True
+            End Sub
+
+
+            '
+            ' Main sub to start
+            '
+            Sub Categorize()
+                Dim importsheetRow As Long
+                Dim RuleRow As Long
+                Dim RuleColumn As Long
+                Dim RuleColumnLetter As String
+                Dim RuleImportLookupColumn As String
+                Dim RuleComparisonRule As String
+                Dim IsEmptyCell As Boolean
+                Dim RuleComparisonValue As Range
+                Dim ImportValue As Range
+                Dim RuleIsTrue As Boolean
+                Dim ImportCategoryColumn As String
+                Dim CurrentCategory As String
+                Dim FutureCategory As String
+                Dim FutureCategoryColor As Long
+                Dim ShouldWriteCategory As Boolean
+                Dim AmountRuleMatches As Integer
+
+                 Call OptimizeCode_Begin
+
+                For importsheetRow = 2 To ThisWorkbook.Sheets("Import").Range("A" & Rows.Count).End(xlUp).row
+                    ImportCategoryColumn = ThisWorkbook.Sheets("Rules").Range("A1").Text
+                    CurrentCategory = ThisWorkbook.Sheets("Import").Range(ImportCategoryColumn + CStr(importsheetRow)).Text
+                    If True Or (CurrentCategory = "") Then
+                        For RuleRow = 4 To ThisWorkbook.Sheets("Rules").Range("A" & Rows.Count).End(xlUp).row
+                            RuleIsTrue = True
+                            AmountRuleMatches = 0
+                            For RuleColumn = 3 To ThisWorkbook.Sheets("Rules").Cells(1, Columns.Count).End(xlToLeft).Column
+                                RuleColumnLetter = Col_Letter(RuleColumn)
+                                RuleImportLookupColumn = ThisWorkbook.Sheets("Rules").Range(RuleColumnLetter + "1").Text
+                                RuleComparisonRule = ThisWorkbook.Sheets("Rules").Range(RuleColumnLetter + "3").Text
+
+                                If Not IsEmpty(ThisWorkbook.Sheets("Rules").Range(RuleColumnLetter + CStr(RuleRow))) Then
+                                    Set RuleComparisonValue = ThisWorkbook.Sheets("Rules").Range(RuleColumnLetter + CStr(RuleRow))
+                                    Set ImportValue = ThisWorkbook.Sheets("Import").Range(RuleImportLookupColumn + CStr(importsheetRow))
+                                    If (RuleComparisonRule = "Smaller") Then
+                                        If Not (RuleComparisonValue.Value < ImportValue.Value) Then
+                                            RuleIsTrue = False
+                                            Exit For
+                                        Else
+                                            AmountRuleMatches = AmountRuleMatches + 1
+                                        End If
+                                    End If
+                                    If (RuleComparisonRule = "Larger") Then
+                                        If Not (RuleComparisonValue.Value > ImportValue.Value) Then
+                                            RuleIsTrue = False
+                                            Exit For
+                                        Else
+                                            AmountRuleMatches = AmountRuleMatches + 1
+                                        End If
+                                    End If
+                                    If (RuleComparisonRule = "Equal") Then
+                                        If (IsNumeric(RuleImportLookupColumn)) Then
+                                            If Not (RuleComparisonValue.Value = ImportValue.Value) Then
+                                                RuleIsTrue = False
+                                                Exit For
+                                            Else
+                                                AmountRuleMatches = AmountRuleMatches + 1
+                                            End If
+                                        Else
+                                            If Not (RuleComparisonValue.Text = ImportValue.Text) Then
+                                                RuleIsTrue = False
+                                                Exit For
+                                            Else
+                                                AmountRuleMatches = AmountRuleMatches + 1
+                                            End If
+                                        End If
+                                    End If
+                                    If (RuleComparisonRule = "Contains") Then
+                                        If (ImportValue.Text = "") Or (Not (ImportValue.Text Like "*" + RuleComparisonValue.Text + "*")) Then
+                                            RuleIsTrue = False
+                                            Exit For
+                                        Else
+                                            AmountRuleMatches = AmountRuleMatches + 1
+                                        End If
+                                    End If
+                                    If (RuleComparisonRule = "StartsWith") Then
+                                        If (ImportValue.Text = "") Or (Not Left(ImportValue.Text, Len(RuleComparisonValue)) = RuleComparisonValue) Then
+                                            RuleIsTrue = False
+                                            Exit For
+                                        Else
+                                            AmountRuleMatches = AmountRuleMatches + 1
+                                        End If
+                                    End If
+                                    If (RuleComparisonRule = "Empty") Then
+                                        If ImportValue.Text <> "" Then
+                                            RuleIsTrue = False
+                                            Exit For
+                                        Else
+                                            AmountRuleMatches = AmountRuleMatches + 1
+                                        End If
+                                    End If
+                                End If
+                            Next RuleColumn
+                            If RuleIsTrue = True And AmountRuleMatches > 0 Then
+                                FutureCategory = ThisWorkbook.Sheets("Rules").Range("A" + CStr(RuleRow)).Text
+                                If CurrentCategory = "" Then
+                                    ThisWorkbook.Sheets("Import").Range(ImportCategoryColumn + CStr(importsheetRow)).Value = FutureCategory
+                                    ThisWorkbook.Sheets("Import").Range(ImportCategoryColumn + CStr(importsheetRow)).Interior.ColorIndex = 4
+                                ElseIf CurrentCategory <> FutureCategory Then
+                                    ThisWorkbook.Sheets("Import").Range(ImportCategoryColumn + CStr(importsheetRow)).Interior.ColorIndex = 3
+                                    ThisWorkbook.Sheets("Import").Range("AB" + CStr(importsheetRow)).Value = FutureCategory
+                                ElseIf CurrentCategory = FutureCategory Then
+                                    ThisWorkbook.Sheets("Import").Range(ImportCategoryColumn + CStr(importsheetRow)).Interior.ColorIndex = 50
+                                Else
+                                    ThisWorkbook.Sheets("Import").Range(ImportCategoryColumn + CStr(importsheetRow)).Interior.ColorIndex = 9
+                                End If
+                                Exit For
+                            End If
+                        Next RuleRow
+                    End If
+                Next importsheetRow
+
+                Call OptimizeCode_End
+
+                MsgBox "Klaar!"
+            End Sub
+        </pre>
+
+
+
+      </p>
+    </div>
+  </body>
+</html>
