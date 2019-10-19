@@ -74,13 +74,18 @@
     <div class="container">
       <h1 class="display-4">&#128106; Excel Bestand</h1>
 
+      Het auto-categorizatie stuk van ons huidige Excel sheet is mogelijk handig voor gezinnen die net beginnen
+      met een eigen sheet. Deze pagina is dan ook een goodie. Het is niet direct gerelateerd aan de
+      "manier" omdat "de manier" in elk tool gedaan kan worden.
+
+
       <div class="p-3 mb-2 bg-primary text-white"><h2>Tabbladen</h2></div>
 
       <p>
         Het basis Excel sheet is simpel bestaat uit 3 sheets:
         <ol>
             <li>
-                In het eerste sheet copy en paste je simpelweg de bank-exports van al je transacties. In ons spreadsheet
+                In het eerste sheet copy en paste je simpelweg de bank-exports van al je transacties onder elkaar. In ons spreadsheet
                 hebben we er rond de 17.000 in staan vanaf 2005. Hiernaast staan een extra kolommen zoals:
                 <ul>
                     <li>Een kolom waarin je een term/category/post/label kunt plaatsen bij die specifieke transactie</li>
@@ -112,9 +117,16 @@
 
         <div class="p-3 mb-2 bg-primary text-white"><h2>Categorizatie script</h2></div>
 
-        Het categorizatie script leest alle regels in sheet 2 en brengt de labels aan in sheet 1
+        Het categorizatie script leest alle regels in sheet 2 en brengt de labels aan in sheet 1. Je kunt
+        deze copy en pasten in een Excel Module. En in het menu van Excel kun je een icoontje maken
+        dat linkt aan de module. Zo kun je door het klikken op het icoontje het script runnen.
+        <br />
+        "In de beginne" zal het script niet alles categorizeren omdat je nog niet genoeg regels hebt gemaakt.
+        Dus met en met kun je regels toevoegen door telkens degene die overblijven in het regelsheet
+        te plaatsen. Het is niet heel veel werk maar ook niet weinig werk.
         <br /><br />
-
+        idee: Als we in GitHub regels zouden delen dan zou dit voor iedereen minder werk zijn.
+        <br /><br />
         <pre class="prettyprint">
                 #If False Then
                 Dim Range, Accounts, BudgetLine, Category, Color, RowContent
