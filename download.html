@@ -39,50 +39,26 @@
     </title>
   </head>
   <body>
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link" href=".\index.html">Intro</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href=".\index2.html">Achtergrond</a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link  disabled"
-          tabindex="-1"
-          aria-disabled="true"
-          href=".\download.html"
-          >Budget Sheet Download</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link  disabled"
-          tabindex="-1"
-          aria-disabled="true"
-          href=".\index5.html"
-          >Ervaringen en tips per post</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href=".\index3.html"
-          >Volgende stap: verbeteringen bouwen</a
-        >
-      </li>
-    </ul>
+<ul class="nav nav-tabs">
+<li class="nav-item"><a class="nav-link" href=".\index.html">Intro</a></li>
+<li class="nav-item"><a class="nav-link" href=".\index2.html">Achtergrond</a></li>
+<li class="nav-item"><a class="nav-link disabled" active tabindex="-1" aria-disabled="true" href=".\download.html">Budget Sheet Download</a></li>
+<li class="nav-item"><a class="nav-link" href=".\ervaringen.html">Ervaringen en tips per post</a></li>
+<li class="nav-item"><a class="nav-link" href=".\index3.html">Volgende stap: verbeteren en bouwen</a></li>
+</ul>
 
     <div class="container">
-      <h1 class="display-4">&#128106; Excel Bestand</h1>
+    <h1 class="display-4">&#128106; Excel Bestand</h1>
 
-      Het auto-categorizatie stuk van ons huidige Excel sheet is mogelijk handig voor gezinnen die net beginnen
-      met een eigen sheet. Deze pagina is dan ook een goodie. Het is niet direct gerelateerd aan de
-      "manier" omdat "de manier" in elk tool gedaan kan worden.
+    Het auto-categorizatie stuk van ons huidige Excel sheet is mogelijk handig voor gezinnen die net beginnen
+    met een eigen sheet. Deze pagina is dan ook een goodie. Het is niet direct gerelateerd aan de
+    "manier" omdat "de manier" in elk tool gedaan kan worden. <br /><br />
 
 
       <div class="p-3 mb-2 bg-primary text-white"><h2>Tabbladen</h2></div>
 
       <p>
-        Het basis Excel sheet is simpel bestaat uit 3 sheets:
+        Het basis Excel sheet is simpel bestaat uit een aantal sheets:
         <ol>
             <li>
                 In het eerste sheet copy en paste je simpelweg de bank-exports van al je transacties onder elkaar. In ons spreadsheet
@@ -107,11 +83,31 @@
             <li>
                 Sheet waar je regels in kunt noteren bijvoorbeeld: rekeningnummer X is label "donald duck"
                 <img src="sheet1.JPG" alt="sheet1">
+                uitstapje naar de toekomst:<br />
+                Dit is de huidige opzet, die prima werkt. Maar het kan nog beter :) Het zou handiger zijn
+                als iedereen met een spreadsheet zijn regels kan delen. Dan hoeft maar 1 keer iemand
+                de Donald Duck te categorizeren en bij alle andere mensen wordt deze dan ook automatisch
+                gecategorizeeerd. Dit vereist wel het hebben van gelijke taxomomie of het hebben van meerdere
+                taxonomieen, waarvan een de A-B-C=D taxonomie is.<br />
+                In de echte wereld zijn er systemen waar functies gestandaardiseerd zijn. In XACML bijvoorbeeld
+                is er een standaard lijst met functies zoals "string-equal". Deze verwacht dan een attribuut, die
+                altijd bestaat uit een "categorie" met een eigenschap, als ook een waarde. Als we dit spreadsheet
+                gaan uitbreiden dan zal het die kanten op gaan. Want dat betekent dat we een stapje omhoog gaan
+                en 1 categorie hebben: transactie, die dan meerdere eigenschappen heeft. Die eigenschappen verbind
+                je dan aan waardes en de specifieke instantie van een functie sla je dan op in json of xml zodat
+                we alle functies die mensen dan willen delen kunnen gaan verzamelen op een plek. Dat is handig
+                want dan hoef je ze zelf niet meer toe te voegen. In theorie zouden alle budget software systemen
+                dan van dezelfde pool gebruik kunnen maken. En we leveragen dan op open OASIS standaarden voor
+                de uitwisseling van deze benoemde functies. Dat vereist een aparte pagina met de regels,
+                dat staat nog op TODO :)
             </li>
             <li>
                 Een sheet waarin alle labels staan, zodat je ze handig uit een pulldown menu kunt selecteren. Op diezelfde
                 sheet staat achter die kolom het "totaal" en dan per jaar het totaal. Zo fungeert die slide als lijst
                 van je labels en tegelijkertijd als een snel overzicht.
+            </li>
+            <li>
+                (optioneel) Via
             </li>
         </ol>
 
